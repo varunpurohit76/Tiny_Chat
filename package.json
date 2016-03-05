@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/varunpurohit76/Tiny_Chat/issues"
   },
-  "homepage": "https://github.com/varunpurohit76/Tiny_Chat#readme"
+  "homepage": "https://github.com/varunpurohit76/Tiny_Chat#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "socket.io": "^1.4.5"
+  }
 }
