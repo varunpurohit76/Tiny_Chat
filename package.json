@@ -1,0 +1,19 @@
+{
+  "name": "tiny_chat",
+  "version": "1.0.0",
+  "description": "test app for socket.io",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/varunpurohit76/Tiny_Chat.git"
+  },
+  "author": "varunpurohit76",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/varunpurohit76/Tiny_Chat/issues"
+  },
+  "homepage": "https://github.com/varunpurohit76/Tiny_Chat#readme"
+}
