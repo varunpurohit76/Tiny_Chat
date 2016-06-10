@@ -19,5 +19,9 @@
   "dependencies": {
     "express": "^4.13.4",
     "socket.io": "^1.4.5"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.13.0",
+    "gulp": "^3.9.1"
   }
 }
