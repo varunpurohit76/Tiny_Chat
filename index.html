@@ -21,16 +21,22 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-      var socket = io();
-      $('form').submit(function(){
-        socket.emit('chat message', $('#m').val());
-        $('#m').val('');
-        return false;
-      });
-      socket.on('chat message', function(msg){
-        console.log(msg);
-        $('#messages').append($('<li>').text(msg));
-      });
+			let user=prompt('User Name','Default');
+			if(!user){
+				alert('please enter a valid user name');
+			}
+			else{
+				var socket = io();
+				$('form').submit(function(){
+					socket.emit('chat message', $('#m').val(),user);
+					$('#m').val('');
+					return false;
+				});
+				socket.on('chat message', function(msg,user){
+					console.log(msg);
+					$('#messages').append($('<li>').text(user + ':' + msg));
+				});
+			}
     </script>
   </body>
 </html>
