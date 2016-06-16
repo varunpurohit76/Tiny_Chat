@@ -19,20 +19,25 @@
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+		<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-			let user=prompt('User Name','Default');
-			if(!user){
-				alert('please enter a valid user name');
+			var socket = io();
+			var user = '';
+			socket.on('connect',()=>{
+					user = prompt('UserName','Default');
+					console.log(user);
+			});
+			console.log(user);              // not getting assigned
+			if(user == ''){
+				alert('Enter a valid user name');
 			}
 			else{
-				var socket = io();
-				$('form').submit(function(){
+				$('form').submit(()=>{
 					socket.emit('chat message', $('#m').val(),user);
 					$('#m').val('');
 					return false;
 				});
-				socket.on('chat message', function(msg,user){
+				socket.on('chat message', (msg,user)=>{
 					console.log(msg);
 					$('#messages').append($('<li>').text(user + ':' + msg));
 				});
