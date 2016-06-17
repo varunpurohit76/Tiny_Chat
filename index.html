@@ -16,9 +16,16 @@
     </style>
   </head>
   <body>
-    <ul id="messages"></ul>
+    <div style="width: 100%;">
+      <div style="float:left; width: 80%">
+        <ul id="messages"></ul>
+      </div>
+      <div style="float:right;">
+        <ul id="show_online"></ul>
+      </div>
+    </div>
     <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
+    <input id="m" autocomplete="off" /><button>Send</button>
     </form>
     <script src="/socket.io/socket.io.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
