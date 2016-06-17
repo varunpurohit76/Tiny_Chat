@@ -43,13 +43,13 @@ function openChat(){
 				console.log(msg);
 				$('#messages').append($('<li>').text(username + ' : ' + msg));
 			}); 
-			socket.on('user left', function(username, user_nos, people_online) {
-				$('#messages').append($('<li class=\'delete\'>').text(username + ' left! '+user_nos + ' people online.'  ));
+			socket.on('user left', function(username, people_online) {
+				$('#messages').append($('<li class=\'delete\'>').text(username + ' left! '+ people_online.length + ' people online.'  ));
 				displayonline(people_online);
 			});
 
-			socket.on('user connected', function(username, user_nos, people_online) {
-				$('#messages').append($('<li class=\'add\'>').text(username + ' joined! '+user_nos + ' people online.'  ));
+			socket.on('user connected', function(username, people_online) {
+				$('#messages').append($('<li class=\'add\'>').text(username + ' joined! '+ people_online.length + ' people online.'  ));
 				displayonline(people_online);
 			});
 		}).emit('authenticate',{token: userToken});
