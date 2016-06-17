@@ -22,24 +22,26 @@
 		<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
 			var socket = io();
-			var user = '';
 			socket.on('connect',function(){
-					user = prompt('UserName','Default');
+					var user = prompt('UserName','Default');
 					if(user == ''){
 						alert('Enter a valid user name');
 					}
 					else{
-						$('form').submit(()=>{
-							socket.emit('chat message', $('#m').val(),user);
-							$('#m').val('');
-							return false;
-						});
-						socket.on('chat message', (msg,user)=>{
-							console.log(msg);
-							$('#messages').append($('<li>').text(user + ':' + msg));
-						});
+						socket.emit('user',user);
 					}
 			});
+			$('form').submit(()=>{
+					socket.emit('chat message', $('#m').val());
+					$('#m').val('');
+					return false;
+			});
+			socket.on('chat message', (msg,user)=>{
+					$('#messages').append($('<li>').text(user + ':' + msg));
+			});
+			socket.on('new user',function(user){
+					$('#messages').append($('<li>').text(user + ' joined the convo').css('font-style','italic'));
+			})
     </script>
   </body>
 </html>
