@@ -3,7 +3,6 @@ var app = express();
 var http = require('http').Server(app);
 var socketioJwt = require('socketio-jwt');
 var io = require('socket.io')(http);
-var user_nos = 0;
 var people_online = [];
 
 app.use(express.static(__dirname));

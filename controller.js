@@ -43,7 +43,6 @@ function openChat(){
 				console.log(msg);
 				$('#messages').append($('<li>').text(username + ' : ' + msg));
 			}); 
-
 			socket.on('user left', function(username, user_nos, people_online) {
 				$('#messages').append($('<li class=\'delete\'>').text(username + ' left! '+user_nos + ' people online.'  ));
 				displayonline(people_online);
@@ -57,14 +56,16 @@ function openChat(){
 	});
 }
 function displayonline(people_online) {
-	var Parent = document.getElementById('show_online');
-	while(Parent.hasChildNodes())
-	{
-		Parent.removeChild(Parent.firstChild);
-	}
-	var len = people_online.length;
-	for(i=0;i<len;i++) {
-		console.log(people_online[i]);
-		$('#show_online').append($('<li class=\'add\'>').text(people_online[i]));
-	}
+  var Parent = document.getElementById('show_online');
+  while(Parent.hasChildNodes())
+  {
+     Parent.removeChild(Parent.firstChild);
+  }
+
+  var len = people_online.length;
+  $('#show_online').append($('<li>').text('People Online'));
+  for(i=0;i<len;i++) {
+    console.log(people_online[i]);
+    $('#show_online').append($('<li class=\'online\'>').text(people_online[i]));
+  }
 }
