@@ -15,13 +15,13 @@ socket.on('chat message', function(msg, username){
   $('#messages').append($('<li>').text(username + ' : ' + msg));
 }); 
 
-socket.on('user left', function(username, user_nos, people_online) {
-  $('#messages').append($('<li class=\'delete\'>').text(username + ' left! '+user_nos + ' people online.'  ));
+socket.on('user left', function(username, people_online) {
+  $('#messages').append($('<li class=\'delete\'>').text(username + ' left! '+ people_online.length + ' people online.'  ));
   displayonline(people_online);
 })
 
-socket.on('user connected', function(username, user_nos, people_online) {
-  $('#messages').append($('<li class=\'add\'>').text(username + ' joined! '+user_nos + ' people online.'  ));
+socket.on('user connected', function(username, people_online) {
+  $('#messages').append($('<li class=\'add\'>').text(username + ' joined! '+ people_online.length + ' people online.'  ));
   displayonline(people_online);
 })
 
@@ -35,9 +35,9 @@ function displayonline(people_online) {
   }
 
   var len = people_online.length;
-
+  $('#show_online').append($('<li>').text('People Online'));
   for(i=0;i<len;i++) {
     console.log(people_online[i]);
-    $('#show_online').append($('<li class=\'add\'>').text(people_online[i]));
+    $('#show_online').append($('<li class=\'online\'>').text(people_online[i]));
   }
 }

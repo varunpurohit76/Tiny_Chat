@@ -13,6 +13,9 @@
       #messages li:nth-child(odd) { background: #eee; }
       #messages .add {color:green;}
       #messages .delete {color:red;}
+      #show_online { list-style-type: none; margin: 0; padding: 0; }
+      #show_online li { padding: 5px 10px; }
+      #show_online .online {color:green;}
     </style>
   </head>
   <body>
@@ -20,7 +23,7 @@
       <div style="float:left; width: 80%">
         <ul id="messages"></ul>
       </div>
-      <div style="float:right;">
+      <div style="float:right; width: 20%">
         <ul id="show_online"></ul>
       </div>
     </div>
