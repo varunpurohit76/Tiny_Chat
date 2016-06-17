@@ -11,42 +11,24 @@
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
-			#messages .add {color:green;}
-			#messages .delete {color:red;}
+      #messages .add {color:green;}
+      #messages .delete {color:red;}
     </style>
   </head>
   <body>
-    <ul id="messages"></ul>
+    <div style="width: 100%;">
+      <div style="float:left; width: 80%">
+        <ul id="messages"></ul>
+      </div>
+      <div style="float:right;">
+        <ul id="show_online"></ul>
+      </div>
+    </div>
     <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
+    <input id="m" autocomplete="off" /><button>Send</button>
     </form>
     <script src="/socket.io/socket.io.js"></script>
-		<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-			var socket = io();
-			socket.on('connect',function(){
-					var user = prompt('UserName','Default');
-					if(user == ''){
-						alert('Enter a valid user name');
-					}
-					else{
-						socket.emit('user',user);
-					}
-			});
-			$('form').submit(()=>{
-					socket.emit('chat message', $('#m').val());
-					$('#m').val('');
-					return false;
-			});
-			socket.on('chat message', (msg,user)=>{
-					$('#messages').append($('<li>').text(user + ' : ' + msg));
-			});
-			socket.on('new user',function(user){
-					$('#messages').append($('<li class=\'add\'>').text(user + ' joined the convo'));
-			})
-			socket.on('user left',function(user){
-					$('#messages').append($('<li class=\'delete\'>').text(user + ' left the convo'));
-			});
-    </script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src='/controller.js'></script>
   </body>
 </html>

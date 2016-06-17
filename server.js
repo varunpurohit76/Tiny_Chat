@@ -2,22 +2,33 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var user_nos = 0;
+var people_online = [];
 
+app.use(express.static(__dirname));
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', function(socket){
-	var username = '';
-	socket.on('user',function(user){
-		username = user;
-		socket.broadcast.emit('new user',user);
-	});
-	socket.on('chat message', function(msg){
-		io.emit('chat message', msg,username);
-	});
-	socket.on('disconnect',function(){
-		socket.broadcast.emit('user left',username);
+	var user;
+
+	socket.on('disconnect', function(msg, username) {
+		user_nos--;
+		var r = people_online.indexOf(user);
+		people_online.splice(r,1);
+		socket.broadcast.emit('user left', user, user_nos, people_online);
+	})
+	
+	socket.on('user connected', function(username) {
+		user_nos++;
+		people_online.push(username)
+		io.emit('user connected', username, user_nos, people_online);	
+		user = username;
+	})
+
+	socket.on('chat message', function(msg ,username){
+		io.emit('chat message', msg, username);
 	});
 });
 
