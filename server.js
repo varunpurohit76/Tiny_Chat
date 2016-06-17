@@ -16,6 +16,9 @@ io.on('connection', function(socket){
 	socket.on('chat message', function(msg){
 		io.emit('chat message', msg,username);
 	});
+	socket.on('disconnect',function(){
+		socket.broadcast.emit('user left',username);
+	});
 });
 
 var port = Number(process.env.PORT || 3000)

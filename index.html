@@ -11,6 +11,8 @@
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
+			#messages .add {color:green;}
+			#messages .delete {color:red;}
     </style>
   </head>
   <body>
@@ -37,11 +39,14 @@
 					return false;
 			});
 			socket.on('chat message', (msg,user)=>{
-					$('#messages').append($('<li>').text(user + ':' + msg));
+					$('#messages').append($('<li>').text(user + ' : ' + msg));
 			});
 			socket.on('new user',function(user){
-					$('#messages').append($('<li>').text(user + ' joined the convo').css('font-style','italic'));
+					$('#messages').append($('<li class=\'add\'>').text(user + ' joined the convo'));
 			})
+			socket.on('user left',function(user){
+					$('#messages').append($('<li class=\'delete\'>').text(user + ' left the convo'));
+			});
     </script>
   </body>
 </html>
