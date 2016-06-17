@@ -19,7 +19,10 @@
     </style>
   </head>
   <body>
-    <div style="width: 100%;">
+		<div id="login">
+			<button>LOGIN</button>
+		</div>
+    <div style="width: 100%;" id="chat">
       <div style="float:left; width: 80%">
         <ul id="messages"></ul>
       </div>
@@ -32,6 +35,8 @@
     </form>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+		<script src="https://cdn.auth0.com/js/lock-9.0.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <script src='/controller.js'></script>
   </body>
 </html>
