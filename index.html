@@ -2,73 +2,59 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-      #messages .add {color:green;}
-      #messages .delete {color:red;}
-      #show_online { list-style-type: none; margin: 0; padding: 0; }
-      #show_online li { padding: 5px 10px; }
-      #show_online .online {color:green;}
-      .footer {
+			body{margin: 0;
+			    padding: 0;
+			    font-weight: 300;
+			    font: 13px Helvetica, Arial;
+			    color: #333333;}
+			#main{width: 60em;
+						margin: 6em auto;}
+			#messages { list-style-type: none; margin: 0; padding: 0; height:560px;overflow-y:auto;}
+			#messages li{box-shadow: 0px 1px 4px 0px rgba(85, 98, 112, 0.5);
+									padding: 0.7em;
+									margin: 0.4em 0;
+									margin-top:0;
+			}
+      #messages .add {color:green;background:#c8f28b;box-shadow:0;}
+      #messages .delete {color:red;background:#ED9F87;box-shadow:0;}
+      #main #chat .footer {
       background-color: white;
       bottom: 0;
-      height: 10%;
-      position: absolute;
+      position: fixed;
       width: 100%;
-      padding-top: 7px;
       }
+			.online{display:flex;flex-direction:column;width:100%;padding:0;margin:0;}
+			#show_online{padding:3px 0;margin:0;background:#D1CCCB;border-bottom:2px solid #B0ABA9;font-size:15px;}
+			#show_online li {display:flex;float:left;padding:5px;margin:5px 5px;border-left:2px solid #B0ABA9;margin-left:0;}
     </style>
   </head>
   <body>
-		<div id="login">
-      <br>
-      <button type="button" class="btn btn-success btn-lg btn-block">Login</button>
-      <br>
-      <a href="https://github.com/varunpurohit76/Tiny_Chat">View Source</a>
-		</div>
-    
-    <div id="chat">
-      <div style="width: 100%; height:550px;">
-        <div id="chat_content" style="height:550px;
-        width:80%;
-        overflow-y:auto;
-        float:left;
-        position:relative;
-        margin-left:-5px; ">
-          <ul id="messages"></ul>
-        </div>
-        <div style="float:right; width: 20%">
-          <ul id="show_online"></ul>
-        </div>
-      </div>
-
-      <div><p></p></div>
-
+		<div id="main">
+			<div id="login">
+				<button class="btn btn-lg btn-primary btn-block">LOGIN</button>
+			</div>
+			<div style="width: 100%;" id="chat">
+				<div class="online">
+					<ul id="show_online"></ul>
+				</div>
+				<ul id="messages"></ul>
+        <!-- for displaying people typing -->
+        <div><p></p></div>
+      <!-- sexu footeu -->
       <footer class="footer">
-      <div class="container">
         <form action="">
-          <div class="row">
-              <div class="col-lg-12">
                 <div class="input-group input-group-lg">
                       <input id="m" autocomplete="off" type="text" class="form-control input-lg" placeholder="Your message here!">
                       <span class="input-group-btn">
                       <button class="btn btn-default btn-lg" type="submit">Send</button>
                       </span> 
                 </div><!-- /input-group -->
-              </div><!-- /.col-l -->
-            </div>
           </form>
-        </div>
-      </footer>
-
-    </div>
-
-
+      </footer> 			</div>
+		</div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 		<script src="https://cdn.auth0.com/js/lock-9.0.min.js"></script>

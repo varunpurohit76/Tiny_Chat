@@ -17,11 +17,10 @@
   },
   "homepage": "https://github.com/varunpurohit76/Tiny_Chat#readme",
   "dependencies": {
-    "dotenv": "^2.0.0",
+    "bootstrap": "^3.3.6",
     "express": "^4.13.4",
     "socket.io": "^1.4.5",
     "socketio-jwt": "^4.4.0"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

@@ -2,9 +2,8 @@ var userProfile;
 var userToken;
 var lock = new Auth0Lock('rlKumH145FiN62bUQGHGJbximTHPvUPF', 'monicagangwar.auth0.com');
 var hash = lock.parseHash();
+$('#main #chat').hide();
 var username;
-
-$('#chat').hide();
 $('#login button').click(function(e){
 	e.preventDefault();
 	lock.show();
@@ -32,9 +31,10 @@ function openChat(){
 	var socket = io();
 	socket.on('connect', function() {
 		socket.on('authenticated',function(){
-			$('#login').hide();
-			$('#chat').show();
-			username = prompt('Nick name','User');
+			$('#main').css('width','100%').css('margin','0');
+			$('#main #login').hide();
+			$('#main #chat').show();
+			var username = prompt('Nick name','User');
 			socket.emit('user connected', username);
 			$('form').submit(function(){
 				socket.emit('chat message', $('#m').val(), username);
@@ -80,9 +80,10 @@ function displayonline(people_online) {
   }
 
   var len = people_online.length;
-  $('#show_online').append($('<li>').text('People Online'));
+	$('#show_online').append($('<li>').text('People Online'));
   for(i=0;i<len;i++) {
-    $('#show_online').append($('<li class=\'online\'>').text(people_online[i]));
+    console.log(people_online[i]);
+    $('#show_online').append($('<li>').text(people_online[i]));
   }
 }
 
@@ -100,7 +101,6 @@ function displayTyping(people_typing_unique) {
 	}
 }
 function updateScroll(){
-    var element = document.getElementById("chat_content");
+    var element = document.getElementById("messages");
     element.scrollTop = element.scrollHeight;
 }
-
