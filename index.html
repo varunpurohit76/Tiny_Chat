@@ -2,37 +2,49 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-      #messages .add {color:green;}
+			body{margin: 0;
+			    padding: 0;
+			    background: #c8f28b;
+			    font-weight: 300;
+			    font: 13px Helvetica, Arial;
+			    color: #333333;}
+			#main{width: 60em;
+						margin: 6em auto;}
+			form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+			form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+			form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+			#messages { list-style-type: none; margin: 0; padding: 0; }
+			#messages li{box-shadow: 0px 1px 4px 0px rgba(85, 98, 112, 0.5);
+									padding: 0.5em;
+									margin: 0.4em 0;
+			}
+      #messages .add {color:green;background:#c8f28b;box-shadow:0;}
       #messages .delete {color:red;}
-      #show_online { list-style-type: none; margin: 0; padding: 0; }
-      #show_online li { padding: 5px 10px; }
-      #show_online .online {color:green;}
     </style>
   </head>
   <body>
-		<div id="login">
-			<button>LOGIN</button>
+		<div id="main">
+			<div id="login">
+				<button class="btn btn-lg btn-primary btn-block">LOGIN</button>
+			</div>
+			<div style="width: 100%;" id="chat">
+				<nav class="navbar navbar-inverse navbar-fixed-top">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<div class="navbar-brand" >ONLINE</div>
+						</div>
+						<ul id="show_online" class="nav navbar-nav"></ul>
+					</div>
+				</nav>
+				<ul id="messages"></ul>
+				<form action="">
+					<input id="m" autocomplete="off" /><button>Send</button>
+				</form>
+			</div>
 		</div>
-    <div style="width: 100%;" id="chat">
-      <div style="float:left; width: 80%">
-        <ul id="messages"></ul>
-      </div>
-      <div style="float:right; width: 20%">
-        <ul id="show_online"></ul>
-      </div>
-    </div>
-    <form action="">
-    <input id="m" autocomplete="off" /><button>Send</button>
-    </form>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 		<script src="https://cdn.auth0.com/js/lock-9.0.min.js"></script>
