@@ -67,6 +67,7 @@ function displayonline(people_online) {
   }
 
   var len = people_online.length;
+	$('#show_online').append($('<li>').text('People Online'));
   for(i=0;i<len;i++) {
     console.log(people_online[i]);
     $('#show_online').append($('<li>').text(people_online[i]));
@@ -74,6 +75,6 @@ function displayonline(people_online) {
 }
 
 function updateScroll(){
-    var element = document.getElementById("chat_content");
+    var element = document.getElementById("messages");
     element.scrollTop = element.scrollHeight;
 }
