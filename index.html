@@ -2,12 +2,10 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
@@ -16,6 +14,14 @@
       #show_online { list-style-type: none; margin: 0; padding: 0; }
       #show_online li { padding: 5px 10px; }
       #show_online .online {color:green;}
+      .footer {
+      background-color: white;
+      bottom: 0;
+      height: 10%;
+      position: absolute;
+      width: 100%;
+      padding-top: 7px;
+      }
     </style>
   </head>
   <body>
@@ -23,16 +29,41 @@
 			<button>LOGIN</button>
 		</div>
     <div style="width: 100%;" id="chat">
-      <div style="float:left; width: 80%">
+      <div id="chat_content" style="height:550px;
+      width:80%;
+      overflow-y:auto;
+      float:left;
+      position:relative;
+      margin-left:-5px; ">
         <ul id="messages"></ul>
       </div>
       <div style="float:right; width: 20%">
         <ul id="show_online"></ul>
       </div>
     </div>
-    <form action="">
+
+<!--    <form action="">
     <input id="m" autocomplete="off" /><button>Send</button>
     </form>
+-->    
+    <footer class="footer">
+    <div class="container">
+      <form action="">
+        <div class="row">
+            <div class="col-lg-12">
+              <div class="input-group input-group-lg">
+                    <input id="m" autocomplete="off" type="text" class="form-control input-lg" placeholder="Your message here!">
+                    <span class="input-group-btn">
+                    <button class="btn btn-default btn-lg" type="submit">Send</button>
+                    </span> 
+              </div><!-- /input-group -->
+            </div><!-- /.col-l -->
+          </div>
+        </form>
+      </div>
+    </footer>
+
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 		<script src="https://cdn.auth0.com/js/lock-9.0.min.js"></script>
