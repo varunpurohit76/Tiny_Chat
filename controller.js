@@ -3,6 +3,7 @@ var userToken;
 var lock = new Auth0Lock('rlKumH145FiN62bUQGHGJbximTHPvUPF', 'monicagangwar.auth0.com');
 var hash = lock.parseHash();
 $('#main #chat').hide();
+var username;
 $('#login button').click(function(e){
 	e.preventDefault();
 	lock.show();
@@ -56,6 +57,18 @@ function openChat(){
 				displayonline(people_online);
 				updateScroll();
 			});
+
+			socket.on('is typing', function(people_typing) {
+				var uniqueNames = [];
+				$.each(people_typing, function(i, el){
+ 			   if($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
+				});
+				displayTyping(uniqueNames);
+			});
+
+			$( "#m" ).keyup(function() {
+			socket.emit('is typing', username);
+			});
 		}).emit('authenticate',{token: userToken});
 	});
 }
@@ -74,6 +87,19 @@ function displayonline(people_online) {
   }
 }
 
+function displayTyping(people_typing_unique) {
+	console.log(people_typing_unique);
+	var newHTML;
+	if(people_typing_unique) {
+		newHTML = ["People typing :"];
+	//	newHTML = [];
+		for (var i = 0; i < people_typing_unique.length; i++) {
+	    	newHTML.push('<span> ' + people_typing_unique[i] + '</span>');
+	}
+	console.log(newHTML);
+	$("p").html(newHTML);
+	}
+}
 function updateScroll(){
     var element = document.getElementById("messages");
     element.scrollTop = element.scrollHeight;
