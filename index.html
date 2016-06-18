@@ -2,39 +2,15 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <style>
-			body{margin: 0;
-			    padding: 0;
-			    font-weight: 300;
-			    font: 13px Helvetica, Arial;
-			    color: #333333;}
-			#main{width: 60em;
-						margin: 6em auto;}
-			#messages { list-style-type: none; margin: 0; padding: 0; height:560px;overflow-y:auto;}
-			#messages li{box-shadow: 0px 1px 4px 0px rgba(85, 98, 112, 0.5);
-									padding: 0.7em;
-									margin: 0.4em 0;
-									margin-top:0;
-			}
-      #messages .add {color:green;background:#c8f28b;box-shadow:0;}
-      #messages .delete {color:red;background:#ED9F87;box-shadow:0;}
-      #main #chat .footer {
-      background-color: white;
-      bottom: 0;
-      position: fixed;
-      width: 100%;
-      }
-			.online{display:flex;flex-direction:column;width:100%;padding:0;margin:0;}
-			#show_online{padding:3px 0;margin:0;background:#D1CCCB;border-bottom:2px solid #B0ABA9;font-size:15px;}
-			#show_online li {display:flex;float:left;padding:5px;margin:5px 5px;border-left:2px solid #B0ABA9;margin-left:0;}
-    </style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
 		<div id="main">
 			<div id="login">
-				<button class="btn btn-lg btn-primary btn-block">LOGIN</button>
+				<button class="btn btn-lg btn-primary btn-block">LOGIN</button><br><br>
+				<h4><a href="https://github.com/varunpurohit76/Tiny_Chat">View Source</a><h4>
 			</div>
 			<div style="width: 100%;" id="chat">
 				<div class="online">
