@@ -43,15 +43,18 @@ function openChat(){
 			socket.on('chat message', function(msg, username){
 				console.log(msg);
 				$('#messages').append($('<li>').text(username + ' : ' + msg));
+				updateScroll();
 			}); 
 			socket.on('user left', function(username, people_online) {
 				$('#messages').append($('<li class=\'delete\'>').text(username + ' left! '+ people_online.length + ' people online.'  ));
 				displayonline(people_online);
+				updateScroll();
 			});
 
 			socket.on('user connected', function(username, people_online) {
 				$('#messages').append($('<li class=\'add\'>').text(username + ' joined! '+ people_online.length + ' people online.'  ));
 				displayonline(people_online);
+				updateScroll();
 			});
 		}).emit('authenticate',{token: userToken});
 	});
@@ -68,4 +71,9 @@ function displayonline(people_online) {
     console.log(people_online[i]);
     $('#show_online').append($('<li>').text(people_online[i]));
   }
+}
+
+function updateScroll(){
+    var element = document.getElementById("chat_content");
+    element.scrollTop = element.scrollHeight;
 }
