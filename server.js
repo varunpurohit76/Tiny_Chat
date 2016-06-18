@@ -4,6 +4,7 @@ var http = require('http').Server(app);
 var socketioJwt = require('socketio-jwt');
 var io = require('socket.io')(http);
 var people_online = [];
+var people_typing = [];
 
 app.use(express.static(__dirname));
 
@@ -31,6 +32,19 @@ io
 		socket.on('chat message', function(msg ,username){
 			io.emit('chat message', msg, username);
 		});
+		socket.on('is typing', function(username) {
+			if(people_online.indexOf(user)+1) {
+				var t = people_online.indexOf(user);
+				people_typing.splice(t,1);
+			}
+			people_typing.push(username);
+			io.emit('is typing', people_typing);
+			setTimeout( function() {
+				var t = people_online.indexOf(user);
+				people_typing.splice(t,1);
+				io.emit('is typing', people_typing);
+			}, 750);
+		})
 });
 
 var port = Number(process.env.PORT || 3000)
