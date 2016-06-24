@@ -3,7 +3,6 @@ var userToken;
 var lock = new Auth0Lock('rlKumH145FiN62bUQGHGJbximTHPvUPF', 'monicagangwar.auth0.com');
 var hash = lock.parseHash();
 $('#main #chat').hide();
-var username;
 $('#login button').click(function(e){
 	e.preventDefault();
 	lock.show();
@@ -33,8 +32,15 @@ function openChat(){
 		socket.on('authenticated',function(){
 			$('#main').css('width','100%').css('margin','0');
 			$('#main #login').hide();
+			var username = '';
+			if(username == ''){
+				username = prompt('Nick name','User');
+			}
+			if(username == ''){
+				alert('Login again and enter a valid nick name');
+				return;
+			}
 			$('#main #chat').show();
-			var username = prompt('Nick name','User');
 			socket.emit('user connected', username);
 			$('form').submit(function(){
 				socket.emit('chat message', $('#m').val(), username);
@@ -42,7 +48,6 @@ function openChat(){
 				return false;
 			});
 			socket.on('chat message', function(msg, username){
-				console.log(msg);
 				$('#messages').append($('<li>').text(username + ' : ' + msg));
 				updateScroll();
 			}); 
@@ -82,13 +87,11 @@ function displayonline(people_online) {
   var len = people_online.length;
 	$('#show_online').append($('<li>').text('People Online'));
   for(i=0;i<len;i++) {
-    console.log(people_online[i]);
     $('#show_online').append($('<li>').text(people_online[i]));
   }
 }
 
 function displayTyping(people_typing_unique) {
-	console.log(people_typing_unique);
 	var newHTML;
 	if(people_typing_unique) {
 		newHTML = ["People typing :"];
@@ -96,7 +99,6 @@ function displayTyping(people_typing_unique) {
 		for (var i = 0; i < people_typing_unique.length; i++) {
 	    	newHTML.push('<span> ' + people_typing_unique[i] + '</span>');
 	}
-	console.log(newHTML);
 	$("p").html(newHTML);
 	}
 }
