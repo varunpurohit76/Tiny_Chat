@@ -14,27 +14,27 @@
 					<a href="https://github.com/varunpurohit76/Tiny_Chat">View Source</a>
 				<h4>
 			</div>
-			<div style="width: 100%;" id="chat">
+			<div id="chat">
 				<div class="online">
-					<ul id="show_online"></ul>
+					<ul id="show_online">
+						<li>People Online</li>
+					</ul>
 				</div>
-					<ul id="messages"></ul>
-        
-        		<div><p></p></div>
-			     <footer class="footer">
-			        <form action="">
-			                <div class="input-group input-group-lg">
-			                      <input id="m" autocomplete="off" type="text" class="form-control input-lg" placeholder="Your message here!">
-			                      <span class="input-group-btn">
-			                      <button class="btn btn-default btn-lg" type="submit">Send</button>
-			                      </span> 
-			                </div>
-			          </form>
-			      </footer> 			
-			    </div>
-			</div>
-    	<script src="/socket.io/socket.io.js"></script>
-    	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+				<ul id="messages"></ul>
+      <footer class="footer">
+				<div><i><p></p></i></div>
+        <form action="">
+                <div class="input-group input-group-lg">
+                      <input id="m" autocomplete="off" type="text" class="form-control input-lg" placeholder="Your message here!">
+                      <span class="input-group-btn">
+                      <button class="btn btn-default btn-lg" type="submit">Send</button>
+                      </span> 
+                </div><!-- /input-group -->
+          </form>
+      </footer> 			</div>
+		</div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 		<script src="https://cdn.auth0.com/js/lock-9.0.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     	<script src='/controller.js'></script>

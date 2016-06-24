@@ -1,71 +1,81 @@
-body
-	{
-		margin: 0;
-    	padding: 0;
-    	font-weight: 300;
-    	font: 13px Helvetica, Arial;
-	    color: #333333;
-	}
-#main
-	{
-		width: 60em;
-		margin: 6em auto;
-	}
-#messages 
-	{ 
-		list-style-type: none;
-		margin: 0;
-		padding: 0; 
-		height:540px;
-		overflow-y:auto;
-	}
-#messages li
-	{
-		box-shadow: 0px 1px 4px 0px rgba(85, 98, 112, 0.5);
-		padding: 0.7em;
-		margin: 0.4em 0;
-		margin-top:0;
-	}
-#messages .add 
-	{
-		color:green;
-    	background:#c8f28b;
-    	box-shadow:0;
-    }
-#messages .delete 
-    {
-    	color:red;background:#ED9F87;
-    	box-shadow:0;
-    }
-#main #chat .footer 
-    {
-    	background-color: white;
-    	bottom: 0;
-    	position: fixed;
-    	width: 100%;
-      }
-.online
-	{
-		display:flex;
-		flex-direction:column;
-		width:100%;
-		padding:0;
-		margin:0;
-	}
-#show_online
-	{
-		padding:3px 0;
-		margin:0;
-		background:#D1CCCB;
-		border-bottom:2px solid #B0ABA9;
-		font-size:15px;
-	}
-#show_online li 
-	{
-		display:flex;
-		float:left;
-		padding:5px;
-		margin:5px 5px;
-		border-left:2px solid #B0ABA9;
-		margin-left:0;
-	}
+body{
+	margin: 0;
+	padding: 0;
+	font-weight: 300;
+	font: 13px Helvetica, Arial;
+	color: #333333;
+	display:flex;
+}
+
+#main{
+	width: 60em;
+	margin: 6em auto;
+}
+
+#main #login {
+	margin:1em;
+}
+
+#messages {
+	list-style-type: none; 
+	margin: 0; 
+	padding: 0; 
+	height:78.5vh;
+	overflow-y:auto;
+}
+
+#messages li{
+	box-shadow: 0px 1px 4px 0px rgba(85, 98, 112, 0.5);
+	padding: 0.7em;
+	margin: 0.4em 0;
+	margin-top:0;
+	word-wrap: break-word;
+}
+
+#messages .add {
+	color:green;
+	background:#c8f28b;
+	box-shadow:0;
+}
+
+#messages .delete {
+	color:red;
+	background:#ED9F87;
+	box-shadow:0;
+}
+
+#main #chat{
+	width: 100%;
+}
+
+#main #chat .footer {
+	background-color: white;
+	bottom: 0;
+	position: fixed;
+	width: 100%;
+}
+
+.online{
+	display:flex;
+	flex-direction:column;
+	width:100%;
+	padding:0;
+	margin:0;
+}
+
+#show_online{
+	padding:3px 0;
+	margin:0;
+	background:#D1CCCB;
+	border-bottom:2px solid #B0ABA9;
+	font-size:15px;
+}
+
+#show_online li {
+	display:flex;
+	float:left;
+	padding:5px;
+	margin:5px 5px;
+	border-left:2px solid #B0ABA9;
+	margin-left:0;
+}
