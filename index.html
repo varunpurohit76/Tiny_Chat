@@ -1,55 +1,28 @@
 <!doctype html>
 <html>
-  <head>
-    <title>Socket.IO chat</title>
+	<head>
+		<title>Socket.IO chat</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <style>
-			body{margin: 0;
-			    padding: 0;
-			    font-weight: 300;
-			    font: 13px Helvetica, Arial;
-			    color: #333333;
-					display:flex;}
-			#login{width=100%;padding:1em;}
-			#main{width: 60em;
-						margin: 6em auto;}
-			#messages { list-style-type: none; margin: 0; padding: 0; height:560px;overflow-y:auto;}
-			#messages li{box-shadow: 0px 1px 4px 0px rgba(85, 98, 112, 0.5);
-									padding: 0.7em;
-									margin: 0.4em 0;
-									margin-top:0;
-									word-wrap: break-word;
-			}
-      #messages .add {color:green;background:#c8f28b;box-shadow:0;}
-      #messages .delete {color:red;background:#ED9F87;box-shadow:0;}
-      #main #chat .footer {
-      background-color: white;
-      bottom: 0;
-      position: fixed;
-      width: 100%;
-      }
-			.online{display:flex;flex-direction:column;width:100%;padding:0;margin:0;}
-			#show_online{padding:3px 0;margin:0;background:#D1CCCB;border-bottom:2px solid #B0ABA9;font-size:15px;}
-			#show_online li {display:flex;float:left;padding:5px;margin:5px 5px;border-left:2px solid #B0ABA9;margin-left:0;}
-    </style>
-  </head>
-  <body>
-		<div id="main" >
-			<div id="login" >
-				<button class="btn btn-lg btn-primary btn-block ">LOGIN</button>
+		<link rel="stylesheet" type="text/css" href="style.css">
+ 	</head>
+	<body>
+		<div id="main">
+			<div id="login">
+				<button class="btn btn-lg btn-primary btn-block">LOGIN</button><br><br>
+				<h4>
+					<a href="https://github.com/varunpurohit76/Tiny_Chat">View Source</a>
+				<h4>
 			</div>
-			<div style="width: 100%;" id="chat">
+			<div id="chat">
 				<div class="online">
 					<ul id="show_online">
 						<li>People Online</li>
 					</ul>
 				</div>
 				<ul id="messages"></ul>
-        <!-- for displaying people typing -->
-				<div><i><p></p></i></div>
-      <!-- sexu footeu -->
       <footer class="footer">
+				<div><i><p></p></i></div>
         <form action="">
                 <div class="input-group input-group-lg">
                       <input id="m" autocomplete="off" type="text" class="form-control input-lg" placeholder="Your message here!">
@@ -64,6 +37,6 @@
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 		<script src="https://cdn.auth0.com/js/lock-9.0.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <script src='/controller.js'></script>
+    	<script src='/controller.js'></script>
   </body>
 </html>
